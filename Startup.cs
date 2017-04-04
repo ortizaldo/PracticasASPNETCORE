@@ -41,7 +41,9 @@ namespace WebApplication
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseMySql(@"Server=localhost;database=app_asp_core;uid=root;pwd=S@leroso01;");
+            });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
